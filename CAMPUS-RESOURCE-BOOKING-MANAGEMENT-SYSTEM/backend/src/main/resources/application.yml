@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: college-resource-booking
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/college_resource_booking?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: true
+    properties:
+      hibernate:
+        format_sql: false
+        jdbc:
+          time_zone: UTC
+    show-sql: false
+  servlet:
+    multipart:
+      max-file-size: 12MB
+      enabled: true
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    default-property-inclusion: non_null
+
+server:
+  port: 8080
+  error:
+    include-message: always
+
+jwt:
+  secret: ${JWT_SECRET:CampusOS-ChangeMe-SuperSecretKey-256bits-please-rotate-in-production-xx}
+  expiration-ms: ${JWT_EXPIRATION_MS:28800000}
+  refresh-expiration-ms: ${JWT_REFRESH_EXPIRATION_MS:604800000}
+
+groq:
+  api-key: ${GROQ_API_KEY:}
+  base-url: ${GROQ_BASE_URL:https://api.groq.com/openai/v1}
+  model: ${GROQ_MODEL:llama-3.3-70b-versatile}
+
+app:
+  college-name: ${COLLEGE_NAME:Vasireddy Venkatadri Institute of Technology}
+  college-short: ${COLLEGE_SHORT:VVIT}
+  demo-password: ${DEMO_PASSWORD:Password@123}
+  frontend-url: ${FRONTEND_URL:http://localhost:5173}
+  timezone: ${APP_TIMEZONE:Asia/Kolkata}
+  no-show-grace-minutes: 15
+  waitlist-hold-minutes: 20
+  working-hours-start: "08:00"
+  working-hours-end: "18:00"
+
+logging:
+  level:
+    com.college.booking: INFO
+    org.springframework.security: WARN

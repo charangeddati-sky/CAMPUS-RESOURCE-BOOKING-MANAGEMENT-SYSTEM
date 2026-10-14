@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active: test
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  sql:
+    init:
+      mode: never
+
+jwt:
+  secret: test-secret-key-must-be-long-enough-for-hs256-algorithms-ok
+  expiration-ms: 3600000
+  refresh-expiration-ms: 86400000
+
+groq:
+  api-key:
+  base-url: https://api.groq.com/openai/v1
+  model: llama-3.3-70b-versatile
+
+app:
+  college-name: Test College
+  college-short: TEST
+  demo-password: Password@123
+  frontend-url: http://localhost:5173
+  timezone: UTC
+  no-show-grace-minutes: 15
+  waitlist-hold-minutes: 20
+  working-hours-start: "08:00"
+  working-hours-end: "18:00"
+
+logging:
+  level:
+    com.college.booking: WARN

@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-cream-50 text-grove-900 font-sans antialiased;
+}
+
+.dark body,
+.dark {
+  @apply bg-grove-900 text-cream-100;
+}
+
+.glass {
+  @apply bg-white/70 dark:bg-grove-800/70 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-glass;
+}
+
+.soft-card {
+  @apply bg-white dark:bg-grove-800 rounded-2xl border border-cream-200 dark:border-white/10 shadow-sm;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-grove-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-grove-600 hover:shadow-md active:scale-[0.98] disabled:opacity-50;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-cream-200 bg-white/70 px-5 py-2.5 text-sm font-semibold transition hover:bg-white dark:border-white/10 dark:bg-white/5;
+}
+
+.field {
+  @apply w-full rounded-xl border border-cream-200 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-grove-500 focus:ring-2 focus:ring-grove-500/20 dark:border-white/10 dark:bg-grove-800;
+}
+
+.focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-grove-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-grove-900;
+}
+
+.campus-hotspot {
+  @apply absolute rounded-md border-2 transition-all duration-300 cursor-pointer;
+}
+
+.stat-kicker {
+  @apply text-[11px] font-semibold uppercase tracking-[0.18em] text-grove-500;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #146c4a55;
+  border-radius: 999px;
+}
+
+/* FullCalendar — campus theme */
+.fc {
+  --fc-border-color: #e8dfcc;
+  --fc-page-bg-color: transparent;
+  --fc-neutral-bg-color: #f4efe4;
+  --fc-today-bg-color: #146c4a14;
+  --fc-event-bg-color: #146c4a;
+  --fc-event-border-color: #146c4a;
+  --fc-button-bg-color: #0f3d2e;
+  --fc-button-border-color: #0f3d2e;
+  --fc-button-hover-bg-color: #146c4a;
+  --fc-button-active-bg-color: #0b2c22;
+  font-family: Manrope, system-ui, sans-serif;
+}
+.dark .fc {
+  --fc-border-color: #ffffff1a;
+  --fc-neutral-bg-color: #0b2c22;
+  --fc-page-bg-color: transparent;
+  --fc-today-bg-color: #d4a01722;
+  --fc-neutral-text-color: #f4efe4;
+}
+.fc .fc-toolbar-title {
+  font-family: Fraunces, serif;
+  font-size: 1.35rem;
+}
+.fc .fc-button {
+  border-radius: 999px !important;
+  text-transform: capitalize;
+  padding: 0.35rem 0.85rem !important;
+}
+.fc .fc-event {
+  border-radius: 8px;
+  border: 0;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.fc .fc-timegrid-slot {
+  height: 2.4rem;
+}
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border-color: var(--fc-border-color);
+}
+
+
+.animate-success-pop {
+  animation: success-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.animate-modal-enter {
+  animation: modal-enter 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.animate-fade-in {
+  animation: fade-in 0.3s ease forwards;
+}
+.animate-check-draw {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: check-draw 0.6s 0.3s ease forwards;
+}
+
+/* Tooltip */
+.tooltip-trigger {
+  position: relative;
+}
+.tooltip-trigger::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: #0f3d2e;
+  color: #f4efe4;
+  font-size: 11px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 50;
+}
+.tooltip-trigger:hover::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
